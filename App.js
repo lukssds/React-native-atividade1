@@ -1,25 +1,24 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import { View, StyleSheet,ScrollView} from 'react-native';
-import Header from './components/Header';
-import WorkSpace from './components/WorkSpace';
+/* eslint-disable no-dupe-keys */
+
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Produtos from './components/Products';
+import Detalhe from './components/Detalhe';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
+
   return (
-
-    <ScrollView> 
-      <View style={styles.container}>
-      <Header/>
-        <WorkSpace />
-      </View>
-    </ScrollView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Products" component={Produtos} options={{ title: 'Loja de luminárias' }} />
+        <Stack.Screen name="Detalhes" component={Detalhe} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+}
 
 export default App;
